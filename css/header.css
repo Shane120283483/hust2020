@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+ 
+body {
+    font-family:"Microsoft YaHei";
+    transition: background-color .5s;
+}
+.header {
+	height:180px;
+	width:100%;
+	position: fixed;
+	z-index: 1;
+	top:0;
+	left:0;
+	background-color: #282c35;
+}
