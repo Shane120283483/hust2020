@@ -1,8 +1,8 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>物业管理系统</title>
+		<link rel="stylesheet" href="css/bg.css" />
 		<link rel="stylesheet" href="css/header.css" />
 		<link rel="stylesheet" href="css/sidenav.css" />
 		<link rel="stylesheet" href="css/font_2044497_i1km71kdgab/iconfont.css" />
@@ -20,18 +20,8 @@
 			<section id="time" style="color:white; position:absolute; top:140px; right:200px;"></section>
 			<i style="color: white; font-size: 20px; position: absolute; top:140px; right:150px;" class="iconfont icon-xinxi"></i>
 			<i style="color: white; font-size: 30px; position: absolute; top:134px; right:100px;" class="iconfont icon-tousu"></i>
-			
-			<div id="app" style="position: absolute; top:130px; left:160px; z-index:1">
-				<el-button @click="visible = true" type="primary" style="border-color: white; background-color: #282c35; color: white;">登录</el-button>
-				<el-dialog :visible.sync="visible" title="请输入账号和密码">
-					<el-input
-					  placeholder="账号"
-					  v-model="input"
-					  clearable>
-					</el-input>
-					<el-input placeholder="密码" v-model="input" show-password></el-input>
-				</el-dialog>
-			</div>
+			<button type="button" style="border-radius:6px; border-color: transparent;  background-color: #f0f0f0; position: absolute; left: 180px; bottom: 20px; height: 22px; box-shadow: 1px 1px 0px #6a948f"
+			 onclick="openDialog()">登录</button>
 		</div>
 
 		<!--侧栏页面设计-->
@@ -50,33 +40,36 @@
 
 		<!--主界面-->
 		<div id="main" style="height:100%; width: 100%; position: fixed; top:180px; left:0; background-color: #d9ffff; margin-left: 200px;">
-<!-- 			<p style="color: #000000;">主界面</p> -->
+		
 		</div>
+		
+		<div id="light" class="white_content">
+			<!--登录弹窗模块-->
+			<h4 style="color: #929d93;"> 物业管理系统登录</h4>
+			<HR style="FILTER: progid:DXImageTransform.Microsoft.Shadow(color:#060508,direction:145,strength:15)" width="80%"
+			 color=#060508 SIZE=1>
+			<section style="position:absolute; top:95px; left:120px;">
+				<p style="font-size:16px;color: #929d93;">账号:</p>
+				<input style="position: absolute;top: 18px; left: 42px;" type="text" placeholder=请输入账号 value="" id="账号">
+			</section>
+			<section style="position:absolute; top:135px; left:120px;">
+				<p style="font-size:16px;color: #929d93;">密码:</p>
+				<input style="position: absolute; top:18px; left: 42px;" type="password" placeholder=请输入密码 value="" id="密码">
+			</section>
+			<section style="position:absolute; top:200px; left:170px;">
+				<button type="button" style="background-color: #ffffff;border-radius:6px;box-shadow: 1px 1px 0px #6a948f;outline: none;"
+				 onclick="logIn()">登 录</button>
+				<button type="button" style="background-color: #ffffff;border-radius:6px;box-shadow: 1px 1px 0px #6a948f;outline: none;"
+				 onclick="closeDialog()">退 出</button>
+			</section>
+		</div>
+		<div id="fade" class="black_overlay"></div>
 	</body>
-	
+
 	<!-- import Vue before Element -->
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<!-- import JavaScript -->
 	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-	<script>
-		new Vue({
-			el: '#app',
-			data: function() {
-				return {
-					visible: false
-				}
-			}
-		})
-	</script>
-	<script>
-	  export default {
-	    data() {
-	      return {
-	        input: ''
-	      }
-	    }
-	  }
-	</script>
 	<script src="js/my.js" type="text/javascript"></script>
 	<script src="js/element.js" type="text/javascript"></script>
 </html>

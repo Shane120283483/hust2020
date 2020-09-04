@@ -1,3 +1,29 @@
+function openDialog() {
+	<!--打开登录弹窗-->
+	document.getElementById('light').style.display = 'block';
+	document.getElementById('fade').style.display = 'block'
+}
+
+function closeDialog() {
+	<!--关闭登陆弹窗-->
+	document.getElementById('light').style.display = 'none';
+	document.getElementById('fade').style.display = 'none'
+}
+
+function logIn() {
+	<!--登录-->
+	if (document.getElementById('账号').value == '') {
+		alert('请输入账号');
+	} else if (document.getElementById('密码').value == '') {
+		alert('请输入密码');
+	} else if (document.getElementById('账号').value.length < 8) {
+		alert('账号长度过短');
+	} else if (document.getElementById('密码').value.length < 8) {
+		alert('密码长度过短');
+	}else{
+		//to do
+	}
+}
 function openNav() {
 	document.getElementById("mySidenav").style.width = "200px";
 	document.getElementById("main").style.marginLeft = "200px";
