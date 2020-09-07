@@ -25,21 +25,21 @@ function logIn() {
 	}
 }
 function openNav() {
-	document.getElementById("mySidenav").style.width = "200px";
+	document.getElementById("mySidenav").style.left = "0px";
 	document.getElementById("main").style.marginLeft = "200px";
 }
 
 function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
+	document.getElementById("mySidenav").style.left = "-200px";
 	document.getElementById("main").style.marginLeft = "0";
 }
 
-function toggleNav() {
-	var w1 = document.getElementById("main").style.marginLeft;
-	if (w1 == "200px") {
-		closeNav();
-	} else {
+function toggleNav() {//侧栏菜单按钮响应
+	var m = document.getElementById("main").style.marginLeft;
+	if (m == "0px") {
 		openNav();
+	} else {
+		closeNav();
 	}
 }
 
