@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -12,50 +13,116 @@
 	<body>
 		<!--顶部栏-->
 		<div id="top" class="header">
+			<!--系统标题-->
 			<p style="margin-left: 20px;color:white;font-size:20px;">韵苑小区物业管理系统</p>
+			<!--头像区-->
 			<section style="position:absolute; top:70px; left:70px;">
-				<img style="position:absolute; top:5px; left:5px; border-radius:35px; border:none;" width="70px" height="70px" src="img/1.jpg" />
+				<img style="position:relative; top:5px; left:5px; border-radius:35px; border:none;" width="70px" height="70px" src="img/1.jpg" />
 			</section>
+			<!--侧边菜单栏按钮-->
 			<span style="color:white; position: absolute; top:140px; left:30px; font-size:20px; cursor:pointer" onclick="toggleNav()">&#9776;</span>
+			<!--实时时间-->
 			<section id="time" style="color:white; position:absolute; top:140px; right:200px;"></section>
+			<!--消息提示-->
 			<i style="color: white; font-size: 20px; position: absolute; top:140px; right:150px;" class="iconfont icon-xinxi"></i>
+			<!--投诉提示-->
 			<i style="color: white; font-size: 30px; position: absolute; top:134px; right:100px;" class="iconfont icon-tousu"></i>
+			<!--登录按钮-->
 			<button type="button" style="border-radius:6px; border-color: transparent;  background-color: #f0f0f0; position: absolute; left: 180px; bottom: 20px; height: 22px; box-shadow: 1px 1px 0px #6a948f"
 			 onclick="openDialog()">登录</button>
 		</div>
 
 		<!--侧栏页面设计-->
 		<div id="mySidenav" class="sidenav">
-			<a href="#"><i class="iconfont icon-kongzhitai"> </i>控制台</a>
-			<a href="#"><i class="iconfont icon-mo"> </i>小区管理</a>
-			<a href="#"><i class="iconfont icon-shouye"> </i>房产管理</a>
-			<a href="#"><i class="iconfont icon-yezhuguanli-"> </i>业主信息管理</a>
-			<a href="#"><i class="iconfont icon-tingche1"> </i>停车位管理</a>
-			<a href="#"><i class="iconfont icon-fuwu"> </i>服务管理</a>
-			<a href="#"><i class="iconfont icon-zichanx"> </i>资产管理</a>
-			<a href="#"><i class="iconfont icon-shoufei"> </i>收费管理</a>
-			<a href="#"><i class="iconfont icon-guanliyuan"> </i>管理员管理</a>
-			<a href="#"><i class="iconfont icon-shezhi"> </i>系统设置</a>
+			<summary><i class="iconfont icon-kongzhitai"> </i>控制台</summary>
+			<details class="menu">
+				<summary><i class="iconfont icon-mo"> </i>小区管理</summary>
+				<ul>
+					<li><a href="#">小区列表</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-shouye"> </i>房产管理</summary>
+				<ul>
+					<li><a href="#">房产管理</a></li>
+					<li><a href="#">栋数管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-yezhuguanli-"> </i>业主信息管理</summary>
+				<ul>
+					<li><a href="#">人员管理</a></li>
+					<li><a href="#">车辆管理</a></li>
+					<li><a href="#">宠物管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-tingche1"> </i>停车位管理</summary>
+				<ul>
+					<li><a href="#">车位管理</a></li>
+					<li><a href="#">车位使用管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-fuwu"> </i>服务管理</summary>
+				<ul>
+					<li><a href="#">活动管理</a></li>
+					<li><a href="#">保修管理</a></li>
+					<li><a href="#">投诉管理</a></li>
+					<li><a href="#">信箱管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-zichanx"> </i>资产管理</summary>
+				<ul>
+					<li><a href="#">资产设备管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-shoufei"> </i>收费管理</summary>
+				<ul>
+					<li><a href="#">收费项目</a></li>
+					<li><a href="#">收费明细管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-guanliyuan"> </i>管理员管理</summary>
+				<ul>
+					<li><a href="#">管理员列表</a></li>
+					<li><a href="#">用户组管理</a></li>
+					<li><a href="#">权限管理</a></li>
+				</ul>
+			</details>
+			<details class="menu">
+				<summary><i class="iconfont icon-shezhi"> </i>系统设置</summary>
+				<ul>
+					<li><a href="#">系统设置</a></li>
+					<li><a href="#">个人设置</a></li>
+				</ul>
+			</details>
 		</div>
 
 		<!--主界面-->
 		<div id="main" style="height:100%; width: 100%; position: fixed; top:180px; left:0; background-color: #d9ffff; margin-left: 200px;">
-		
+			<!--to do-->
 		</div>
-		
+
 		<div id="light" class="white_content">
 			<!--登录弹窗模块-->
 			<h4 style="color: #929d93;"> 物业管理系统登录</h4>
 			<HR style="FILTER: progid:DXImageTransform.Microsoft.Shadow(color:#060508,direction:145,strength:15)" width="80%"
 			 color=#060508 SIZE=1>
+			<!--账号输入区-->
 			<section style="position:absolute; top:95px; left:120px;">
 				<p style="font-size:16px;color: #929d93;">账号:</p>
 				<input style="position: absolute;top: 18px; left: 42px;" type="text" placeholder=请输入账号 value="" id="账号">
 			</section>
+			<!--密码输入区-->
 			<section style="position:absolute; top:135px; left:120px;">
 				<p style="font-size:16px;color: #929d93;">密码:</p>
 				<input style="position: absolute; top:18px; left: 42px;" type="password" placeholder=请输入密码 value="" id="密码">
 			</section>
+			<!--登录退出按钮区-->
 			<section style="position:absolute; top:200px; left:170px;">
 				<button type="button" style="background-color: #ffffff;border-radius:6px;box-shadow: 1px 1px 0px #6a948f;outline: none;"
 				 onclick="logIn()">登 录</button>

@@ -1,13 +1,13 @@
 function openDialog() {
 	<!--打开登录弹窗-->
 	document.getElementById('light').style.display = 'block';
-	document.getElementById('fade').style.display = 'block'
+	document.getElementById('fade').style.display = 'block';
 }
 
 function closeDialog() {
-	<!--关闭登陆弹窗-->
+	<!--关闭登录弹窗-->
 	document.getElementById('light').style.display = 'none';
-	document.getElementById('fade').style.display = 'none'
+	document.getElementById('fade').style.display = 'none';
 }
 
 function logIn() {

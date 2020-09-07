@@ -1,53 +1,125 @@
 @charset "utf-8";
 /* CSS Document */
- 
+
 body {
-    font-family:"Microsoft YaHei";
-    transition: background-color .5s;
+	font-family: "Microsoft YaHei";
+	transition: background-color .5s;
 }
 
 /*侧边栏选择器*/
 .sidenav {
-    height: 100%;
-    width: 200px; /*原始宽度*/
-    position: fixed;
-    /*z-index（上方1，下方-1）、top、left共同控制侧栏的悬浮*/
-    z-index: -1;
-    top: 180px;
-    left: 0;
-    background-color: #282c35;
-    overflow-x: hidden;
-    transition: 0.5s; /*侧栏延迟0.5s显示*/
-    padding-top: 10px;
+	height: 100%;
+	width: 200px;
+	/*原始宽度*/
+	position: fixed;
+	/*z-index（上方1，下方-1）、top、left共同控制侧栏的悬浮*/
+	z-index: -1;
+	top: 180px;
+	left: 0;
+	background-color: #282c35;
+	overflow-x: hidden;
+	transition: 0.5s;
+	/*侧栏延迟0.5s显示*/
+	padding-top: 10px;
 	border-top: solid;
 	border-width: 2px;
 	border-color: #aaffff;
 }
- 
+
+.menu ul {
+	padding: 0px;
+}
+
+.menu ul li {
+	list-style: none;
+	text-indent: 25px;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+}
+
 /*侧边栏标签选择器*/
-.sidenav a {
-    padding: 8px 8px 8px 32px;
+.menu ul li a {
+	margin-left: 32px;
 	margin-top: 8px;
-    text-decoration: none;
-    font-size: 16px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s; /*标签延迟0.3s显示*/
+	text-decoration: none;
+	font-size: 16px;
+	color: #ffffff;
+	display: block;
+	transition: 0.3s;
+	/*标签延迟0.3s显示*/
 }
- 
+
+.menu ul li a:hover{
+	text-decoration: underline;
+	color: #0077AA;
+}
+
 /*侧栏标签效果*/
-.sidenav a:hover{
+.menu summary:hover {
 	background-color: #a7aadd;
+	border-left: 6px solid #416aff;
 }
- 
+
+.menu summary {
+	padding: 10px 8px 10px 8px;//上右下左
+	margin-top: 8px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #ffffff;
+	display: block;
+	transition: 0.3s;
+	/*标签延迟0.3s显示*/
+}
+
+.menu summary::-webkit-details-marker {
+	display: none;
+}
+
+.menu summary:before {
+	content: "+";
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.menu[open] summary:before {
+	content: "-";
+}
+
+.sidenav summary{
+	padding: 10px 8px 10px 8px;//上右下左
+	margin-top: 8px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #ffffff;
+	display: block;
+	transition: 0.3s;
+	/*标签延迟0.3s显示*/
+}
+
+.sidenav summary:hover {
+	background-color: #a7aadd;
+	border-left: 6px solid #416aff;
+}
+
 /*主体内容*/
 #main {
-    transition: margin-left .5s;/*主体内容延迟0.5s整体y右移动*/
-    padding: 16px;
+	transition: margin-left .5s;
+	/*主体内容延迟0.5s整体y右移动*/
+	padding: 16px;
 }
- 
+
 /*当文档高度小于450px时，改变侧栏的padding属性和字体大小*/
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+	.sidenav {
+		padding-top: 15px;
+	}
+
+	.sidenav a {
+		font-size: 18px;
+	}
 }
