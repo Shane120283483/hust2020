@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body {
-	font-family: "Microsoft YaHei";
+	font-family: "Arial",sans-serif;
 	transition: background-color .5s;
 }
 
@@ -16,14 +16,18 @@ body {
 	z-index: 1;
 	top: 180px;
 	left: -200px;
-	background-color: #282c35;
-	overflow: scroll;
+	background-color: #21242d;
+	overflow-x: hidden;
 	transition: 0.5s;
 	/*侧栏延迟0.5s显示*/
 	padding-top: 10px;
 	border-top: solid;
 	border-width: 2px;
 	border-color: #aaffff;
+}
+
+.menu{
+	margin-top: 10px;
 }
 
 .menu ul {
@@ -50,9 +54,9 @@ body {
 	/*标签延迟0.3s显示*/
 }
 
-.menu ul li a:hover{
-	text-decoration: underline;
+.menu ul li a:hover {
 	color: #0077AA;
+	cursor: pointer;
 }
 
 /*侧栏标签效果*/
@@ -63,7 +67,7 @@ body {
 }
 
 .menu summary {
-	padding: 10px 8px 10px 8px;//上右下左
+	padding: 10px 8px 10px 8px; //上右下左
 	margin-top: 8px;
 	text-decoration: none;
 	font-size: 16px;
@@ -71,6 +75,7 @@ body {
 	display: block;
 	transition: 0.3s;
 	/*标签延迟0.3s显示*/
+	cursor: pointer;
 }
 
 .menu summary::-webkit-details-marker {
@@ -91,8 +96,8 @@ body {
 	content: "-";
 }
 
-.sidenav summary{
-	padding: 10px 8px 10px 8px;//上右下左
+.sidenav summary {
+	padding: 10px 8px 10px 8px; //上右下左
 	margin-top: 8px;
 	text-decoration: none;
 	font-size: 16px;
@@ -100,6 +105,7 @@ body {
 	display: block;
 	transition: 0.3s;
 	/*标签延迟0.3s显示*/
+	cursor: pointer;
 }
 
 .sidenav summary:hover {
@@ -107,20 +113,58 @@ body {
 	border-left: 6px solid #416aff;
 }
 
-/*主体内容*/
-#main {
-	transition: margin-left .5s;
-	/*主体内容延迟0.5s整体y右移动*/
+#top {
+	transition: left .5s;
 	padding: 0px;
 }
 
-/* 当文档高度小于450px时，改变侧栏的padding属性和字体大小
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
+#main {
+	transition: left .5s;
+}
 
-	.sidenav a {
-		font-size: 18px;
-	}
-} */
+.foldsidenav {
+	height: 100%;
+	width: 40px;
+	background-color: #21242d;
+	position: fixed;
+	top: 0;
+	left: 0;
+	transition: 0.6s;
+}
+
+.foldsidenav ul {
+	padding: 0px;
+}
+
+.foldsidenav ul li {
+	list-style: none;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	width: 40px;
+	margin-top: 20px;
+}
+
+.foldsidenav ul li span {
+	position: absolute;
+	left: 9px;
+	font-size: 20px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.foldsidenav ul li i {
+	position: absolute;
+	left: 8px;
+	font-size: 20px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.foldsidenav ul li span:hover{
+	background-color: #1b668f;
+}
+
+.foldsidenav ul li i:hover{
+	background-color: #1b668f;
+}
