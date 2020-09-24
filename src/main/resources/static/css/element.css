@@ -1,0 +1,15 @@
+@import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+
+
+.el-dialog{
+    width: 500px;
+}
+
+/* 为了tab占满所有区域 */
+.el-tabs__content{
+    height: 100%;
+    width: 100%;
+}
+
+
+

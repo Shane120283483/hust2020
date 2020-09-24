@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>物业管理系统</title>
+    <link rel="stylesheet" href="css/element.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="css/sidenav.css"/>
+    <!-- 引入element样式 -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body onload="checkLogin(); setTimeout('openNav()', 200)" style="height: 100%">
+<!--顶部栏-->
+<div id="top" class="header">
+    <!--侧边菜单栏按钮-->
+    <span style="position:absolute; margin-top:20px; margin-left:10px; border:none; color: white; font-size:20px; cursor:pointer"
+          onclick="toggleNav()">&#9776;</span>
+    <div id="logout_button" onclick="logout()">注销</div>
+    <!--头像区-->
+    <img id="user_icon" style="position:absolute; margin-top:60px; margin-left:70px; border:none; border-radius: 30px;" width="60px"
+         height="60px" src="img/0.svg" alt=""/>
+    <!--登录按钮-->
+    <button type="button" class="button"
+            style="visibility: hidden; position:absolute; margin-top:135px; margin-left:65px;" onclick="openDialog()"
+            id="login_button">登 录
+    </button>
+    <div id="user_name"></div>
+    <div style="position: relative; margin-top: 170px; height: 1.5px; width: 86%; margin-left: 7%; background-color: #308EEF;"></div>
+</div>
+
+<!--主界面-->
+<div id="app" style="height: 100%">
+    <!--侧栏菜单-->
+    <div id="mySidenav" class="sidenav">
+        <details id="fangchan" class="menu">
+            <summary onclick="setDetails('fangchan')"><i class="iconfont icon-shouye"> </i> 房产管理</summary>
+            <ul>
+                <li><a @click="addTab('房产管理')">房产管理</a></li>
+            </ul>
+        </details>
+        <details id="tingche" class="menu">
+            <summary onclick="setDetails('tingche')"><i class="iconfont icon-tingche1"> </i> 停车位管理</summary>
+            <ul>
+                <li><a @click="addTab('车位使用管理')">车位使用管理</a></li>
+                <li><a @click="addTab('停车信息管理')">停车信息管理</a></li>
+            </ul>
+        </details>
+        <details id="shoufei" class="menu">
+            <summary onclick="setDetails('shoufei')"><i class="iconfont icon-shoufei"> </i> 收费管理</summary>
+            <ul>
+                <li><a @click="addTab('收费明细管理')">收费明细管理</a></li>
+                <li><a @click="addTab('价格管理')">价格管理</a></li>
+                <li><a @click="addTab('水费管理')">水费管理</a></li>
+                <li><a @click="addTab('电费管理')">电费管理</a></li>
+                <li><a @click="addTab('煤气费管理')">煤气费管理</a></li>
+            </ul>
+        </details>
+        <details id="guanliyuan" class="menu">
+            <summary onclick="setDetails('guanliyuan')"><i class="iconfont icon-guanliyuan"> </i> 管理员列表</summary>
+            <ul>
+                <li><a @click="addTab('管理员列表')">管理员列表</a></li>
+                <li><a @click="addTab('权限管理')">权限管理</a></li>
+            </ul>
+        </details>
+    </div>
+    <!--折叠侧边栏-->
+    <div id="foldside" class="foldsidenav">
+        <ul>
+            <li><span onclick="toggleNav()">&#9776;</span></li>
+            <li><i onclick="foldsideNav('fangchan')" class="iconfont icon-shouye"> </i></li>
+            <li><i onclick="foldsideNav('tingche')" class="iconfont icon-tingche1"> </i></li>
+            <li><i onclick="foldsideNav('shoufei')" class="iconfont icon-shoufei"> </i></li>
+            <li><i onclick="foldsideNav('guanliyuan')" class="iconfont icon-guanliyuan"> </i></li>
+        </ul>
+    </div>
+    <!--主区域-->
+    <div id="main"
+         style="height:100%; width: 100%; position: fixed; top:0; left:40px; background-color: #ffffff; margin-left: 0;">
+        <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab" style="height:100%; width: 100%;">
+            <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title"
+                         :name="item.name" style="height:100%; width: 100%">
+                <iframe :src="item.content" style="overflow:scroll; width:87%; height:92%;border:none;"></iframe>
+            </el-tab-pane>
+        </el-tabs>
+    </div>
+</div>
+
+<!--登录弹窗模块-->
+<div id="light" class="white_content">
+    <!--默认头像-->
+    <img style="position:relative; top:15px; left:200px; border-radius:35px; width: 50px; height: 50px;"
+         src="img/0.svg" alt=""/>
+    <!--账号输入区-->
+    <section style="position:relative; top:5px; left:90px;">
+        <p style="font-size:16px;color: #ffffff;">账号:</p>
+		<label for="账号"></label><input style="position:relative; top:-35px; left:50px; font-size:13px; width: 180px; border-radius:5px; border-width: 3px; border-color: #FFFFFF; border-style: solid;"
+									   type="text" placeholder=请输入账号 value="" id="账号">
+    </section>
+    <!--密码输入区-->
+    <section style="position:relative; top:-20px; left:90px;">
+        <p style="font-size:16px;color: #ffffff;">密码:</p>
+		<label for="密码"></label><input style="position:relative; top:-35px; left:50px;font-size:13px; width: 180px; border-radius:5px; border-width: 3px; border-color: #FFFFFF; border-style: solid;"
+									   type="password" placeholder=请输入密码 value="" id="密码">
+    </section>
+    <!--登录退出按钮区-->
+    <section style="position:relative; top:-30px; left:150px;">
+        <button type="button"
+                style="cursor: pointer; color: #FFFFFF; background-color: #409eff;width: 70px; height: 25px; border-radius:15px; border-width: 0; outline: none;"
+                onclick="logIn()">登 录
+        </button>
+        <button type="button"
+                style="cursor: pointer; margin-left: 10px; color: #FFFFFF; background-color: #409eff;width: 70px; height: 25px; border-radius:15px; border-width: 0; outline: none;"
+                onclick="closeDialog()">退 出
+        </button>
+    </section>
+</div>
+<!--背景虚化-->
+<div id="fade" class="black_overlay"></div>
+</body>
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+<script src="js/my.js" type="text/javascript"></script>
+<script src="js/tab.js" type="text/javascript"></script>
+<script src="js/MD5.js" type="text/javascript"></script>
+</html>

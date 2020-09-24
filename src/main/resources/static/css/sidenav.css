@@ -1,0 +1,200 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: "Arial",sans-serif;
+	transition: background-color .5s;
+}
+
+#user_name {
+	position: absolute;
+	margin-top: 135px;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
+
+#logout_button {
+	cursor: pointer;
+	position: absolute;
+	margin-left: 150px;
+	margin-top: 25px;
+	color: #888888;
+	width: fit-content;
+	height: fit-content;
+	font-size: 15px;
+	visibility: hidden;
+}
+
+.button {
+	height: 25px;
+	padding-left: 20px;
+	padding-right: 20px;
+	align-content: center;
+	font-size: 14px; 
+	border: 0px; 
+	cursor: pointer; 
+	border-radius: 15px;
+	background-color: #409eff; 
+	color: #FFFFFF; 
+	outline: none;
+}
+
+/*侧边栏选择器*/
+.sidenav {
+	height: 100%;
+	width: 200px;
+	/*原始宽度*/
+	position: fixed;
+	/*z-index（上方1，下方-1）、top、left共同控制侧栏的悬浮*/
+	z-index: 1;
+	top: 180px;
+	left: -200px;
+	background-color: #21242d;
+	overflow: auto;
+	transition: 0.5s;
+	/*侧栏延迟0.5s显示*/
+	padding-top: 10px;
+}
+
+.menu{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.menu ul {
+	padding: 0;
+}
+
+.menu ul li {
+	list-style: none;
+	text-indent: 25px;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+}
+
+/*侧边栏标签选择器*/
+.menu ul li a {
+	margin-left: 32px;
+	margin-top: 8px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #ffffff;
+	display: block;
+	transition: 0.5s;
+	/*标签延迟0.5s显示*/
+}
+
+.menu ul li a:hover {
+	color: #0077AA;
+	cursor: pointer;
+}
+
+/*侧栏标签效果*/
+.menu summary:hover {
+	background-color: #dbddff;
+	border-left: 6px solid #416aff;
+	color: #000000;
+}
+
+.menu summary {
+	padding: 10px 8px 10px 8px;
+	margin-top: 8px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #ffffff;
+	display: block;
+	transition: 0.5s;
+	/*标签延迟0.5s显示*/
+	cursor: pointer;
+}
+
+.menu summary::-webkit-details-marker {
+	display: none;
+}
+
+.menu summary:before {
+	content: "+";
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	font-weight: 700;
+}
+
+.menu[open] summary:before {
+	content: "-";
+}
+
+.sidenav summary {
+	padding: 10px 8px 10px 8px; 
+	margin-top: 8px;
+	text-decoration: none;
+	color: #ffffff;
+	display: block;
+	transition: 0.5s;
+	/*标签延迟0.5s显示*/
+	cursor: pointer;
+}
+
+.sidenav summary:hover {
+	background-color: #a7aadd;
+	border-left: 6px solid #416aff;
+}
+
+#top {
+	transition: left .5s;
+	padding: 0;
+}
+
+#main {
+	transition: left .5s;
+}
+
+.foldsidenav {
+	height: 100%;
+	width: 40px;
+	background-color: #21242d;
+	position: fixed;
+	top: 0;
+	left: 0;
+	transition: 0.5s;
+}
+
+.foldsidenav ul {
+	padding: 0;
+}
+
+.foldsidenav ul li {
+	list-style: none;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	width: 40px;
+	margin-top: 20px;
+}
+
+.foldsidenav ul li span {
+	position: absolute;
+	left: 9px;
+	font-size: 20px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.foldsidenav ul li i {
+	position: absolute;
+	left: 8px;
+	font-size: 20px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.foldsidenav ul li span:hover{
+	background-color: #1b668f;
+}
+
+.foldsidenav ul li i:hover{
+	background-color: #1b668f;
+}

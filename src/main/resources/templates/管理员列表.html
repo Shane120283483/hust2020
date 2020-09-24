@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/table.css"/>
+    <!-- 引入element样式 -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/element.css"/>
+</head>
+<body>
+<div id="app">
+    <template>
+        <div style="height: 100%;">
+            <el-button type="warning" @click="deleteItem('管理员列表')" plain>批量删除</el-button>
+            <el-button type="primary" @click="dialogVisible = true;" plain>添加</el-button>
+            <el-button type="primary" @click="refresh" plain>点击刷新</el-button>
+            <template>
+                <el-dialog title="管理员信息添加" :visible.sync="dialogVisible" style="width: 100%;">
+                    <iframe style="width:100%; height:540px; border: none"src="/index?query=管理员添加"></iframe>
+                </el-dialog>
+            </template>
+            <el-table id="table" ref="table" :data="tableData" style="margin-top: 10px; width: fit-content;" border >
+                <el-table-column type="selection" width="40px" :selectable='check'></el-table-column>
+                <el-table-column prop="account" label="账号" width="100px"></el-table-column>
+                <el-table-column prop="name" label="姓名" width="100px"></el-table-column>
+                <el-table-column prop="sex" label="性别" width="50px"></el-table-column>
+                <el-table-column prop="phone" label="手机" width="200px"></el-table-column>
+                <el-table-column prop="title" label="职务" width="100px"></el-table-column>
+                <el-table-column prop="birthday" label="生日" width="200px"></el-table-column>
+                <el-table-column prop="employDate" label="入职时间" width="200px"></el-table-column>
+            </el-table>
+        </div>
+    </template>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script src="js/jquery.cookie.js" type="text/javascript"></script>
+<script src="js/my.js" type="text/javascript"></script>
+<script th:inline="javascript">
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                tableData: [[${DataList}]],
+                dialogVisible: false,
+            }
+        },
+        methods: {
+            refresh(){
+                location.reload();
+            },
+            check(row, rowIndex){
+                return row.account != "root";
+            },
+ 
+            deleteItem(moduleName) {
+                var info = $.cookie('LoginInfo');
+                if (!info) {
+                    alert('请先登录！');
+                    return;
+                }
+                var loginInfo = JSON.parse(info);
+                var account = loginInfo.account;
+                var token = loginInfo.token;
+
+                var dat = this.$refs.table.selection;
+                if (!dat.length) return;
+                var target_id = [];
+                dat.forEach(i => {
+                    target_id.push(i.account);
+            });
+                $.post({
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/" + moduleName + "/delete?account=" + account + "&token=" + token,
+                    data: JSON.stringify(target_id),
+                    success: function(ret) {
+                        var tar = JSON.parse(ret);
+                        if (tar.return_val === 0) {
+                            location.reload();
+                        } else {
+                            alert(tar.info);
+                        }
+                    },
+                    error: function(ret) {
+                        alert('请求失败，请稍后再试');
+                    }
+                });
+            }
+        }
+    });
+</script>
+</html>
